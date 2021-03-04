@@ -170,9 +170,9 @@ public class PolicyHandler{
 
 DDD 적용 후 REST API의 테스트를 통하여 정상적으로 동작하는 것을 확인할 수 있었다.
 
-- 원격 주문 (Order 주문 후 결과)
+- Message service 호출 결과(하나의 메시지 추가)
 
-![증빙2](https://github.com/bigot93/forthcafe/blob/main/images/order.png)
+![image](https://user-images.githubusercontent.com/57469176/109923155-b6c90a00-7d01-11eb-839a-d932df732d68.png)
 
 # GateWay 적용
 API GateWay를 통하여 마이크로 서비스들의 집입점을 통일할 수 있다. 다음과 같이 GateWay를 적용하였다.
