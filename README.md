@@ -693,7 +693,15 @@ kubectl get pod
 
 * 배포후
 
-![image](https://user-images.githubusercontent.com/5147735/109744225-45139200-7c15-11eb-8efa-07ac40162ded.png)
+![image](https://user-images.githubusercontent.com/57469176/109987225-c704d780-7d49-11eb-8b69-4bc8fb5b9661.png)
+
+* 배포중 부하테스트 결과 - 100% 성공
+```
+siege -c10 -t300S  -v --content-type "application/json" 'http://Message:8080/messages POST {"memuId":2, "quantity":1}'
+```
+![image](https://user-images.githubusercontent.com/57469176/109987645-28c54180-7d4a-11eb-91a1-79a9b1264ec5.png)
+
+
 
 ## Self-healing (Liveness Probe)
 * order 서비스 deployment.yml   livenessProbe 설정을 port 8089로 변경 후 배포 하여 liveness probe 가 동작함을 확인 
