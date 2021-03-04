@@ -41,7 +41,7 @@ public class Pay {
         Message message = new Message();
         // mappings goes here
         BeanUtils.copyProperties(this, message);
-        Application.applicationContext.getBean(MessageService.class).message(message);
+        PayApplication.applicationContext.getBean(MessageService.class).message(message);
 
         // delay test시 주석해제
         //try {
