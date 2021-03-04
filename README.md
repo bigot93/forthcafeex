@@ -354,12 +354,13 @@ Message 서비스 재기동 - 8081: Order service, 8082: Pay service, 8085: Mess
 ![image](https://user-images.githubusercontent.com/57469176/109942957-06b2cb80-7d18-11eb-9e51-273ac86d0b7e.png)
 
 Fallback 설정
-
 ![image](https://user-images.githubusercontent.com/57469176/109943479-9789a700-7d18-11eb-9c7e-68a0ab9a42ad.png)
 ![image](https://user-images.githubusercontent.com/57469176/109943642-c0aa3780-7d18-11eb-8820-43c6c88b7e21.png)
 
 Fallback 결과(Pay service 종료 후 Order 추가 시)
-![image](https://user-images.githubusercontent.com/5147735/109755716-dab91c80-7c29-11eb-9099-ba585115a2a6.png)
+![image](https://user-images.githubusercontent.com/57469176/109944110-3adabc00-7d19-11eb-88ce-d8eb5b15ec3f.png)
+![image](https://user-images.githubusercontent.com/57469176/109944198-52b24000-7d19-11eb-9e46-d45263c3d1f3.png)
+
 
 # 운영
 
