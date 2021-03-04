@@ -534,7 +534,6 @@ az acr build --registry skuser02 --image skuser02.azurecr.io/delivery:v1 .
 kubectl apply -f kubernetes/deployment.yml 
 kubectl expose deploy delivery --type=ClusterIP --port=8080
 
-
 cd .. 
 cd MyPage
 az acr build --registry skuser02 --image skuser02.azurecr.io/mypage:v1 .
@@ -550,7 +549,7 @@ kubectl expose deploy message --type=ClusterIP --port=8080
 cd .. 
 cd gateway
 az acr build --registry skuser02 --image skuser02.azurecr.io/gateway:v1 .
-kubectl create deploy gateway --image=skteam01.azurecr.io/gateway:v1
+kubectl create deploy gateway --image=skuser02.azurecr.io/gateway:v1
 kubectl expose deploy gateway --type=LoadBalancer --port=8080
 ```
 
@@ -559,34 +558,38 @@ kubectl expose deploy gateway --type=LoadBalancer --port=8080
 ```
 cd ..
 cd Order
-az acr build --registry skteam01 --image skteam01.azurecr.io/order:v1 .
-kubectl create deploy order --image=skteam01.azurecr.io/order:v1
+az acr build --registry skuser02 --image skuser02.azurecr.io/order:v1 .
+kubectl create deploy order --image=skuser02.azurecr.io/order:v1
 kubectl expose deploy order --type=ClusterIP --port=8080
 
 cd .. 
 cd Pay
-az acr build --registry skteam01 --image skteam01.azurecr.io/pay:v1 .
-kubectl create deploy pay --image=skteam01.azurecr.io/pay:v1
+az acr build --registry skuser02 --image skuser02.azurecr.io/pay:v1 .
+kubectl create deploy pay --image=skuser02.azurecr.io/pay:v1
 kubectl expose deploy pay --type=ClusterIP --port=8080
-
 
 cd .. 
 cd Delivery
-az acr build --registry skteam01 --image skteam01.azurecr.io/delivery:v1 .
-kubectl create deploy delivery --image=skteam01.azurecr.io/delivery:v1
+az acr build --registry skuser02 --image skuser02.azurecr.io/delivery:v1 .
+kubectl create deploy delivery --image=skuser02.azurecr.io/delivery:v1
 kubectl expose deploy delivery --type=ClusterIP --port=8080
 
+cd .. 
+cd Message
+az acr build --registry skuser02 --image skuser02.azurecr.io/message:v1 .
+kubectl create deploy message --image=skuser02.azurecr.io/message:v1
+kubectl expose deploy message --type=ClusterIP --port=8080
 
 cd .. 
 cd gateway
-az acr build --registry skteam01 --image skteam01.azurecr.io/gateway:v1 .
-kubectl create deploy gateway --image=skteam01.azurecr.io/gateway:v1
+az acr build --registry skuser02 --image skuser02.azurecr.io/gateway:v1 .
+kubectl create deploy gateway --image=skuser02.azurecr.io/gateway:v1
 kubectl expose deploy gateway --type=LoadBalancer --port=8080
 
 cd .. 
 cd MyPage
-az acr build --registry skteam01 --image skteam01.azurecr.io/mypage:v1 .
-kubectl create deploy mypage --image=skteam01.azurecr.io/mypage:v1
+az acr build --registry skuser02 --image skuser02.azurecr.io/mypage:v1 .
+kubectl create deploy mypage --image=skuser02.azurecr.io/mypage:v1
 kubectl expose deploy mypage --type=ClusterIP --port=8080
 
 kubectl logs {pod명}
