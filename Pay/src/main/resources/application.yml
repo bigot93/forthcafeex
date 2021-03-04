@@ -42,10 +42,7 @@ server:
 api:
   url:
     delivery: http://localhost:8083
-
 # message service 호출 주소
-api:
-  url:
     message: http://localhost:8085
 
 # circuit breaker 설정 start
@@ -90,10 +87,7 @@ spring:
 api:
   url:
     delivery: http://Delivery:8080
-
 # message service 호출 주소
-api:
-  url:
     message: http://Message:8085
 
 # circuit breaker 설정 start

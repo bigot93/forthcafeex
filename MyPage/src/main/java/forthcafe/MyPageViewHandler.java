@@ -41,6 +41,31 @@ public class MyPageViewHandler {
         }
     }
 
+    /*
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whenOrdered_then_CREATE_2 (@Payload MessageSended messageSended) {
+        try {
+            if (messageSended.isMe()) {
+                // view 객체 생성
+                MyPage myPage  = new MyPage();
+
+                // view 객체에 이벤트의 Value 를 set 함
+                myPage.setId(messageSended.getId());
+                myPage.setMenuId(messageSended.getMenuId());
+                myPage.setMenuName(messageSended.getMenuName());
+                myPage.setOrdererName(messageSended.getOrdererName());
+                myPage.setPrice(messageSended.getPrice());
+                myPage.setQuantity(messageSended.getQuantity());
+                myPage.setStatus("Messaged");
+
+                // view 레파지 토리에 save
+                myPageRepository.save(myPage);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    */
 
     @StreamListener(KafkaProcessor.INPUT)
     public void whenPayed_then_UPDATE_1(@Payload Payed payed) {
@@ -203,4 +228,31 @@ public class MyPageViewHandler {
             e.printStackTrace();
         }
     }
+
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whenPayed_then_UPDATE_7(@Payload MessageSended messageSended) {
+        try {
+            if (messageSended.isMe()) {
+                // view 객체 조회
+                Optional<MyPage> Optional = myPageRepository.findById(messageSended.getId());
+                if( Optional.isPresent()) {
+                    MyPage myPage = Optional.get();
+                    
+                    // view 객체에 이벤트의 eventDirectValue 를 set 함
+                    myPage.setId(messageSended.getId());
+                    myPage.setMenuId(messageSended.getMenuId());
+                    myPage.setMenuName(messageSended.getMenuName());
+                    myPage.setOrdererName(messageSended.getOrdererName());
+                    myPage.setPrice(messageSended.getPrice());
+                    myPage.setQuantity(messageSended.getQuantity());
+                    myPage.setStatus("messageSended");
+
+                    // view 레파지 토리에 save
+                    myPageRepository.save(myPage);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }    
 }
