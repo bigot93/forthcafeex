@@ -595,6 +595,7 @@ kubectl expose deploy gateway --type=LoadBalancer --port=8080
 kubectl logs {pod명}
 ```
 * Service, Pod, Deploy 상태 확인
+
 ![image](https://user-images.githubusercontent.com/57469176/109969480-4d63ee00-7d37-11eb-82d7-4e43319b79f3.png)
 
 
