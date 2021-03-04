@@ -290,11 +290,11 @@ Order 서비스의 DB와 MyPage의 DB를 다른 DB를 사용하여 폴리글랏�
 
 **Order의 pom.xml DB 설정 코드**
 
-![증빙5](https://github.com/bigot93/forthcafe/blob/main/images/db_conf1.png)
+![image](https://user-images.githubusercontent.com/57469176/109930703-4921db80-7d0b-11eb-82c2-d68150d6a2ba.png)
 
-**MyPage의 pom.xml DB 설정 코드**
+**Message의 pom.xml DB 설정 코드**
 
-![증빙6](https://github.com/bigot93/forthcafe/blob/main/images/db_conf2.png)
+![image](https://user-images.githubusercontent.com/57469176/109930614-30192a80-7d0b-11eb-967c-75470ba513c9.png)
 
 # 동기식 호출 과 Fallback 처리
 
