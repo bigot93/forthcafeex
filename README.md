@@ -472,7 +472,7 @@ env:
 ```
 * Configmap 생성, 정보 확인
 ```
-kubectl create configmap systemmode --from-literal=sysmode=PRODUCT
+kubectl create configmap systemmode --from-literal=sysmode=KUBE
 kubectl get configmap systemmode -o yaml
 ```
 ![image](https://user-images.githubusercontent.com/5147735/109768817-bb77ba80-7c3c-11eb-8856-7fca5213f5b1.png)
