@@ -1,5 +1,5 @@
 // local build command
-mvn boot-spring:run
+mvn spring-boot:run
 
 ////////// req/res 
 http localhost:8081/orders
