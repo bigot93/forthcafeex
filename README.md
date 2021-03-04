@@ -535,16 +535,16 @@ kubectl apply -f kubernetes/deployment.yml
 kubectl expose deploy delivery --type=ClusterIP --port=8080
 
 cd .. 
-cd MyPage
-az acr build --registry skuser02 --image skuser02.azurecr.io/mypage:v1 .
-kubectl apply -f kubernetes/deployment.yml 
-kubectl expose deploy mypage --type=ClusterIP --port=8080
-
-cd .. 
 cd Message
 az acr build --registry skuser02 --image skuser02.azurecr.io/message:v1 .
 kubectl apply -f kubernetes/deployment.yml 
 kubectl expose deploy message --type=ClusterIP --port=8080
+
+cd .. 
+cd MyPage
+az acr build --registry skuser02 --image skuser02.azurecr.io/mypage:v1 .
+kubectl apply -f kubernetes/deployment.yml 
+kubectl expose deploy mypage --type=ClusterIP --port=8080
 
 cd .. 
 cd gateway
@@ -581,21 +581,21 @@ kubectl create deploy message --image=skuser02.azurecr.io/message:v1
 kubectl expose deploy message --type=ClusterIP --port=8080
 
 cd .. 
-cd gateway
-az acr build --registry skuser02 --image skuser02.azurecr.io/gateway:v1 .
-kubectl create deploy gateway --image=skuser02.azurecr.io/gateway:v1
-kubectl expose deploy gateway --type=LoadBalancer --port=8080
-
-cd .. 
 cd MyPage
 az acr build --registry skuser02 --image skuser02.azurecr.io/mypage:v1 .
 kubectl create deploy mypage --image=skuser02.azurecr.io/mypage:v1
 kubectl expose deploy mypage --type=ClusterIP --port=8080
 
+cd .. 
+cd gateway
+az acr build --registry skuser02 --image skuser02.azurecr.io/gateway:v1 .
+kubectl create deploy gateway --image=skuser02.azurecr.io/gateway:v1
+kubectl expose deploy gateway --type=LoadBalancer --port=8080
+
 kubectl logs {pod명}
 ```
 * Service, Pod, Deploy 상태 확인
-![image](https://user-images.githubusercontent.com/5147735/109769165-2de89a80-7c3d-11eb-8472-2281468fb771.png)
+![image](https://user-images.githubusercontent.com/57469176/109969480-4d63ee00-7d37-11eb-82d7-4e43319b79f3.png)
 
 
 * deployment.yml  참고
