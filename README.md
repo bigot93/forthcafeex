@@ -279,7 +279,7 @@ Materialized View를 구현하여, 타 마이크로서비스의 데이터 원본
 
 위와 같이 주문을 하게되면 Order > Pay > Message > MyPage로 주문이 Assigned 되고
 
-주문 취소가 되면 Status가 deliveryCancelled로 Update 되는 것을 볼 수 있다.
+주문 취소가 되면 Status가 payCancelled로 Update 되는 것을 볼 수 있다.
 
 또한 Correlation을 Key를 활용하여 Id를 Key값을 하고 원하는 주문하고 서비스간의 공유가 이루어 졌다.
 
