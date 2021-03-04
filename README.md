@@ -688,8 +688,8 @@ kubectl get pod
 
 * 배포중
 
-![image](https://user-images.githubusercontent.com/5147735/109744076-11386c80-7c15-11eb-849d-6cf4e2c72675.png)
-![image](https://user-images.githubusercontent.com/5147735/109744186-3a58fd00-7c15-11eb-8da3-f11b6194fc6b.png)
+![image](https://user-images.githubusercontent.com/57469176/109986922-886f1d00-7d49-11eb-85b9-204e150bc2c4.png)
+![image](https://user-images.githubusercontent.com/57469176/109986986-94f37580-7d49-11eb-9327-76211d2c3779.png)
 
 * 배포후
 
