@@ -709,13 +709,14 @@ siege -c10 -t300S  -v --content-type "application/json" 'http://Message:8080/mes
     livenessProbe:
       httpGet:
         path: '/actuator/health'
-        port: 8089
+        port: 8090
       initialDelaySeconds: 5
       periodSeconds: 5
 ```
 
-![image](https://user-images.githubusercontent.com/5147735/109740864-4fcb2880-7c0f-11eb-86ad-2aabb0197881.png)
-![image](https://user-images.githubusercontent.com/5147735/109742082-c0734480-7c11-11eb-9a57-f6dd6961a6d2.png)
+![image](https://user-images.githubusercontent.com/57469176/109989088-83ab6880-7d4b-11eb-82ae-82c0c6a4a36e.png)
+
+
 
 
 
