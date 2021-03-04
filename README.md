@@ -42,6 +42,9 @@ mvn spring-boot:run
 cd MyPage
 mvn spring-boot:run  
 
+cd Message
+mvn spring-boot:run  
+
 cd gateway
 mvn spring-boot:run 
 ```
@@ -51,19 +54,17 @@ msaez.io를 통해 구현한 Aggregate 단위로 Entity를 선언 후, 구현을
 
 Entity Pattern과 Repository Pattern을 적용하기 위해 Spring Data REST의 RestRepository를 적용하였다.
 
-**Order 서비스의 Order.java**
+**Message 서비스의 Message.java**
 ```java 
 package forthcafe;
 
 import javax.persistence.*;
 import org.springframework.beans.BeanUtils;
-
-import forthcafe.external.Pay;
-import forthcafe.external.PayService;
+import java.util.List;
 
 @Entity
-@Table(name="Order_table")
-public class Order {
+@Table(name="Message_table")
+public class Message {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -75,28 +76,17 @@ public class Order {
     private Integer quantity;
     private String status;
 
-    @PostPersist
-    public void onPostPersist(){
-        Ordered ordered = new Ordered();
-        BeanUtils.copyProperties(this, ordered);
-        ordered.setStatus("Order");
-        
-        ordered.publish();
+    @PrePersist
+    public void onPrePersist(){
+        // configMap 설정
+        String sysEnv = System.getenv("SYS_MODE");
+        if(sysEnv == null) sysEnv = "LOCAL";
+        System.out.println("################## SYSTEM MODE: " + sysEnv);
 
-        Pay pay = new Pay();
-        BeanUtils.copyProperties(this, pay);
-        
-        OrderApplication.applicationContext.getBean(PayService.class).pay(pay);
+        MessageSended messageSended = new MessageSended();
+        BeanUtils.copyProperties(this, messageSended);
+        messageSended.publishAfterCommit();
     }
-    
-    @PreRemove
-    public void onPreRemove(){
-        OrderCancelled orderCancelled = new OrderCancelled();
-        BeanUtils.copyProperties(this, orderCancelled);
-
-        orderCancelled.publishAfterCommit();
-    }
-
 
     public Long getId() {
         return id;
@@ -151,17 +141,16 @@ public class Order {
         this.menuId = menuId;
     }
 }
+
 ```
 
-**Pay 서비스의 PolicyHandler.java**
+**Message 서비스의 PolicyHandler.java**
 ```java
 package forthcafe;
 
 import forthcafe.config.kafka.KafkaProcessor;
-
-import java.util.List;
-import java.util.Optional;
-
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -169,45 +158,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PolicyHandler{
-
-    @Autowired
-    PayRepository payRepository;
-
     @StreamListener(KafkaProcessor.INPUT)
     public void onStringEventListener(@Payload String eventString){
 
     }
 
-    @StreamListener(KafkaProcessor.INPUT)
-    public void wheneverOrderCancelled_(@Payload OrderCancelled orderCancelled){
-
-        try {
-            if(orderCancelled.isMe()){
-                System.out.println("##### OrderCancelled listener  : " + orderCancelled.toJson());
-    
-                Optional<Pay> Optional = payRepository.findById(orderCancelled.getId());
-    
-                if( Optional.isPresent()) {
-                    Pay pay = Optional.get();
-    
-                    // 객체에 이벤트의 eventDirectValue 를 set 함
-                    pay.setId(orderCancelled.getId());
-                    pay.setMenuId(orderCancelled.getMenuId());
-                    pay.setMenuName(orderCancelled.getMenuName());
-                    pay.setOrdererName(orderCancelled.getOrdererName());
-                    pay.setPrice(orderCancelled.getPrice());
-                    pay.setQuantity(orderCancelled.getQuantity());
-                    pay.setStatus("payCancelled");
-
-                    payRepository.save(pay);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 }
+
 ```
 
 DDD 적용 후 REST API의 테스트를 통하여 정상적으로 동작하는 것을 확인할 수 있었다.
