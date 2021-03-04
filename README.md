@@ -676,14 +676,11 @@ siege -c1000 -t60S  -v --content-type "application/json" 'http://52.141.61.164:8
 ```
 kubectl get deploy message -w
 ```
-![image](https://user-images.githubusercontent.com/5147735/109771563-4c9c6080-7c40-11eb-9bf8-1efef17bedee.png)
+![image](https://user-images.githubusercontent.com/57469176/109980850-b05b8200-7d43-11eb-8ff1-e47793d41f99.png)
 ```
 kubectl get pod
 ```
-![image](https://user-images.githubusercontent.com/5147735/109771259-f3ccc800-7c3f-11eb-8ebe-9ff4ab9c2242.png)
-
-
-
+![image](https://user-images.githubusercontent.com/57469176/109980957-cc5f2380-7d43-11eb-8280-816bd97119aa.png)
 
 ## 무정지 재배포 (Readiness Probe)
 * 배포전
@@ -698,9 +695,6 @@ kubectl get pod
 * 배포후
 
 ![image](https://user-images.githubusercontent.com/5147735/109744225-45139200-7c15-11eb-8efa-07ac40162ded.png)
-
-
-
 
 ## Self-healing (Liveness Probe)
 * order 서비스 deployment.yml   livenessProbe 설정을 port 8089로 변경 후 배포 하여 liveness probe 가 동작함을 확인 
