@@ -362,18 +362,18 @@ Fallback 설정
 ![image](https://user-images.githubusercontent.com/57469176/109943479-9789a700-7d18-11eb-9c7e-68a0ab9a42ad.png)
 ![image](https://user-images.githubusercontent.com/57469176/109943642-c0aa3780-7d18-11eb-8820-43c6c88b7e21.png)
 
-Fallback 결과(Message service 종료후 Order 추가시 - 오더는 정상 생성되나 로그에 메시지서비스 복잡안내 표시)
+Fallback 결과(Message service 종료후 Order 추가시 - 오더는 정상 생성되고, 로그에 Message 서비스 BUSY 표시)
 
 ![image](https://user-images.githubusercontent.com/57469176/109944110-3adabc00-7d19-11eb-88ce-d8eb5b15ec3f.png)
 ![image](https://user-images.githubusercontent.com/57469176/109944198-52b24000-7d19-11eb-9e46-d45263c3d1f3.png)
 
-## 서킷 브레이킹
+# 서킷 브레이킹
 * 서킷 브레이킹 프레임워크의 선택: Spring FeignClient + Hystrix 옵션을 사용하여 구현함
 * Order -> Pay 와의 Req/Res 연결에서 요청이 과도한 경우 CirCuit Breaker 통한 격리
 * Hystrix 를 설정: 요청처리 쓰레드에서 처리시간이 610 밀리가 넘어서기 시작하여 어느정도 유지되면 CB 회로가 닫히도록 (요청을 빠르게 실패처리, 차단) 설정
 
 ```
-// Order서비스 application.yml
+// Pay 서비스 application.yml
 
 feign:
   hystrix:
@@ -387,20 +387,22 @@ hystrix:
 
 
 ```
-// Pay 서비스 Pay.java
+// Message 서비스 Message.java
 
- @PostPersist
-    public void onPostPersist(){
-        Payed payed = new Payed();
-        BeanUtils.copyProperties(this, payed);
-        payed.setStatus("Pay");
-        payed.publishAfterCommit();
+    @PrePersist
+    public void onPrePersist(){
+        MessageSended messageSended = new MessageSended();
+        BeanUtils.copyProperties(this, messageSended);
+        messageSended.publishAfterCommit();
+        messageSended.publish();
 
+        // delay test
         try {
-                 Thread.currentThread().sleep((long) (400 + Math.random() * 220));
-         } catch (InterruptedException e) {
-                 e.printStackTrace();
-         }
+                Thread.currentThread().sleep((long) (400 + Math.random() * 220));
+        } catch (InterruptedException e) {
+                e.printStackTrace();
+        }
+    }
 ```
 
 * /home/project/team/forthcafe/yaml/siege.yaml
