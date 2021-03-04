@@ -665,11 +665,10 @@ spec:
 /home/project/team/forthcafe/yaml/kubectl apply -f siege.yaml
 ```
 
-* siege를 활용해서 워크로드를 1000명, 1분간 걸어준다. (Cloud 내 siege pod에서 부하줄 것)
+* siege를 활용해서 워크로드를 250명, 60초동안 걸어준다. (Cloud 내 siege pod에서 부하줄 것)
 ```
 kubectl exec -it pod/siege -c siege -- /bin/bash
-siege -c1000 -t60S  -v --content-type "application/json" 'http://{EXTERNAL-IP}:8080/messages POST {"memuId":2, "quantity":1}'
-siege -c1000 -t60S  -v --content-type "application/json" 'http://52.141.61.164:8080/messages POST {"memuId":2, "quantity":1}'
+siege -c250 -t60S  -v --content-type "application/json" 'http://Message:8080/messages POST {"memuId":2, "quantity":1}'
 ```
 
 * 오토스케일이 어떻게 되고 있는지 모니터링을 걸어둔다
