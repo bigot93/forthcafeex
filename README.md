@@ -704,7 +704,7 @@ siege -c10 -t300S  -v --content-type "application/json" 'http://Message:8080/mes
 
 
 ## Self-healing (Liveness Probe)
-* order 서비스 deployment.yml   livenessProbe 설정을 port 8089로 변경 후 배포 하여 liveness probe 가 동작함을 확인 
+* order 서비스 deployment.yml   livenessProbe 설정을 port 8090로 변경 후 배포 하여 liveness probe 가 동작함을 확인 
 ```
     livenessProbe:
       httpGet:
