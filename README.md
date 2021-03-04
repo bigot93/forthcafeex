@@ -346,11 +346,12 @@ public interface MessageService {
 주문 요청시 오류 발생
 ![image](https://user-images.githubusercontent.com/57469176/109941664-bab35700-7d16-11eb-8d6a-13b901946295.png)
 
-Delivery 서비스 재기동 후 주문취소
-![증빙9](https://github.com/bigot93/forthcafe/blob/main/images/%EB%8F%99%EA%B8%B0%ED%99%943.png)
+Message 서비스 재기동 - 8081: Order service, 8082: Pay service, 8085: Message service
+![image](https://user-images.githubusercontent.com/57469176/109942102-344b4500-7d17-11eb-80ec-73b717d7df6b.png)
 
-Pay 서비스 상태를 보면 2번 주문 정상 취소 처리됨
-![증빙9](https://github.com/bigot93/forthcafe/blob/main/images/%EB%8F%99%EA%B8%B0%ED%99%944.png)
+주문 요청도 정상으로 처리되고 Message도 정상처리됨
+![image](https://user-images.githubusercontent.com/57469176/109942786-e08d2b80-7d17-11eb-94d1-68aef65ccb30.png)
+![image](https://user-images.githubusercontent.com/57469176/109942957-06b2cb80-7d18-11eb-9e51-273ac86d0b7e.png)
 
 Fallback 설정
 ![image](https://user-images.githubusercontent.com/5147735/109755775-f9b7ae80-7c29-11eb-8add-bdb295dc94e1.png)
