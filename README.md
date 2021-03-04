@@ -357,7 +357,7 @@ Fallback 설정
 ![image](https://user-images.githubusercontent.com/57469176/109943479-9789a700-7d18-11eb-9c7e-68a0ab9a42ad.png)
 ![image](https://user-images.githubusercontent.com/57469176/109943642-c0aa3780-7d18-11eb-8820-43c6c88b7e21.png)
 
-Fallback 결과(Pay service 종료 후 Order 추가 시)
+Fallback 결과(Message service 종료후 Order 추가시 - 오더는 정상 생성되나 로그에 메시지서비스 복잡안내 표시)
 ![image](https://user-images.githubusercontent.com/57469176/109944110-3adabc00-7d19-11eb-88ce-d8eb5b15ec3f.png)
 ![image](https://user-images.githubusercontent.com/57469176/109944198-52b24000-7d19-11eb-9e46-d45263c3d1f3.png)
 
