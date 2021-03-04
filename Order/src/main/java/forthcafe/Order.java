@@ -25,6 +25,11 @@ public class Order {
 
     @PostPersist
     public void onPostPersist(){
+        // configMap 설정
+        String sysEnv = System.getenv("SYS_MODE");
+        if(sysEnv == null) sysEnv = "LOCAL";
+        System.out.println("################## SYSTEM MODE: " + sysEnv);
+
         Ordered ordered = new Ordered();
         BeanUtils.copyProperties(this, ordered);
         ordered.setStatus("Order");
