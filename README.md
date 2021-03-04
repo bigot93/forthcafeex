@@ -405,32 +405,12 @@ hystrix:
     }
 ```
 
-* /home/project/team/forthcafe/yaml/siege.yaml
+* 부하테스터 siege 툴을 통한 서킷 브레이커 동작 확인: 동시사용자 5명 10초 동안 실시
 ```
-apiVersion: v1
-kind: Pod
-metadata:
-  name: siege
-spec:
-  containers:
-  - name: siege
-    image: apexacme/siege-nginx
+siege -c5 -t10S  -v --content-type "application/json" 'http://localhost:8081/orders POST {"memuId":2, "quantity":1}'
 ```
-
-* siege pod 생성
-```
-/home/project/team/forthcafe/yaml/kubectl apply -f siege.yaml
-```
-
-* 부하테스터 siege 툴을 통한 서킷 브레이커 동작 확인: 동시사용자 100명 60초 동안 실시
-```
-kubectl exec -it pod/siege -c siege -- /bin/bash
-siege -c100 -t60S  -v --content-type "application/json" 'http://{EXTERNAL-IP}:8080/orders POST {"memuId":2, "quantity":1}'
-siege -c100 -t30S  -v --content-type "application/json" 'http://52.141.61.164:8080/orders POST {"memuId":2, "quantity":1}'
-```
-![image](https://user-images.githubusercontent.com/5147735/109762408-dd207400-7c33-11eb-8464-325d781867ae.png)
-![image](https://user-images.githubusercontent.com/5147735/109762376-d1cd4880-7c33-11eb-87fb-b739aa2d6621.png)
-
+![image](https://user-images.githubusercontent.com/57469176/109960644-64e9a980-7d2c-11eb-9203-9383f39a208c.png)
+![image](https://user-images.githubusercontent.com/57469176/109960860-9e221980-7d2c-11eb-9dd7-3925e9616958.png)
 
 
 # 운영
