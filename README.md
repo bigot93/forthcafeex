@@ -341,23 +341,29 @@ public interface MessageService {
 **동작 확인**
 
 잠시 Message 서비스 중지 - 8081: Order service, 8082: Pay service
+
 ![image](https://user-images.githubusercontent.com/57469176/109941305-5c867400-7d16-11eb-8898-fcd8878dbb5d.png)
 
 주문 요청시 오류 발생
+
 ![image](https://user-images.githubusercontent.com/57469176/109941664-bab35700-7d16-11eb-8d6a-13b901946295.png)
 
 Message 서비스 재기동 - 8081: Order service, 8082: Pay service, 8085: Message service
+
 ![image](https://user-images.githubusercontent.com/57469176/109942102-344b4500-7d17-11eb-80ec-73b717d7df6b.png)
 
 주문 요청도 정상으로 처리되고 Message도 정상처리됨
+
 ![image](https://user-images.githubusercontent.com/57469176/109942786-e08d2b80-7d17-11eb-94d1-68aef65ccb30.png)
 ![image](https://user-images.githubusercontent.com/57469176/109942957-06b2cb80-7d18-11eb-9e51-273ac86d0b7e.png)
 
-Fallback 설정 
+Fallback 설정
+
 ![image](https://user-images.githubusercontent.com/57469176/109943479-9789a700-7d18-11eb-9c7e-68a0ab9a42ad.png)
 ![image](https://user-images.githubusercontent.com/57469176/109943642-c0aa3780-7d18-11eb-8820-43c6c88b7e21.png)
 
 Fallback 결과(Message service 종료후 Order 추가시 - 오더는 정상 생성되나 로그에 메시지서비스 복잡안내 표시)
+
 ![image](https://user-images.githubusercontent.com/57469176/109944110-3adabc00-7d19-11eb-88ce-d8eb5b15ec3f.png)
 ![image](https://user-images.githubusercontent.com/57469176/109944198-52b24000-7d19-11eb-9e46-d45263c3d1f3.png)
 
