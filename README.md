@@ -25,9 +25,7 @@
 ![image](https://user-images.githubusercontent.com/57469176/109895146-0f80ae80-7cd2-11eb-9d4b-9a20c2016bb2.png)
 
 # 헥사고날 아키텍처 다이어그램 도출
-![image](https://user-images.githubusercontent.com/57469176/109921943-f858b580-7cff-11eb-842a-e6489791b8cb.png)
-
-![증빙10](https://github.com/bigot93/forthcafe/blob/main/images/%ED%97%A5%EC%82%AC%EA%B3%A0%EB%82%A0.png)
+![image](https://user-images.githubusercontent.com/57469176/109922081-2fc76200-7d00-11eb-9841-f77344dbb5fb.png)
 
 # 구현
 분석/설계 단계에서 도출된 헥사고날 아키텍처에 따라, 구현한 각 서비스를 로컬에서 실행하는 방법은 아래와 같다 (각각의 포트넘버는 8081 ~ 8084, 8088 이다)
