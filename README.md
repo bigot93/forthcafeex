@@ -275,7 +275,7 @@ Materialized View를 구현하여, 타 마이크로서비스의 데이터 원본
 
 주문(OrderCancelled) 취소 후 MyPages 화면
 
-![증빙4](https://github.com/bigot93/forthcafe/blob/main/images/cancel_pages.png)
+![image](https://user-images.githubusercontent.com/57469176/109929345-afa5fa00-7d09-11eb-89cd-28c12f7af785.png)
 
 위와 같이 주문을 하게되면 Order > Pay > Delivery > MyPage로 주문이 Assigned 되고
 
