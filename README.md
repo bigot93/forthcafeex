@@ -340,8 +340,8 @@ public interface MessageService {
 
 **동작 확인**
 
-잠시 Message 서비스 중지
-![증빙7](https://github.com/bigot93/forthcafe/blob/main/images/%EB%8F%99%EA%B8%B0%ED%99%941.png)
+잠시 Message 서비스 중지 - 8081: Order service, 8082: Pay service
+![image](https://user-images.githubusercontent.com/57469176/109941305-5c867400-7d16-11eb-8898-fcd8878dbb5d.png)
 
 주문 취소 요청시 Pay 서비스 변화 없음
 ![증빙8](https://github.com/bigot93/forthcafe/blob/main/images/%EB%8F%99%EA%B8%B0%ED%99%942.png)
