@@ -628,7 +628,7 @@ kubectl logs {pod명}
 
 * order 서비스 deployment.yml 설정
 ```
- resources:
+          resources:
             limits:
               cpu: 500m
             requests:
@@ -637,15 +637,15 @@ kubectl logs {pod명}
 * 다시 배포해준다.
 ```
 /home/project/team/forthcafe/Order/mvn package
-az acr build --registry skteam01 --image skteam01.azurecr.io/order:v1 .
+az acr build --registry skuser02 --image skuser02.azurecr.io/message:v1 .
 kubectl apply -f kubernetes/deployment.yml 
-kubectl expose deploy order --type=ClusterIP --port=8080
+kubectl expose deploy message --type=ClusterIP --port=8080
 ```
 
-* Order 서비스에 대한 replica 를 동적으로 늘려주도록 HPA 를 설정한다. 설정은 CPU 사용량이 15프로를 넘어서면 replica 를 10개까지 늘려준다
+* Message 서비스에 대한 replica 를 동적으로 늘려주도록 HPA 를 설정한다. 설정은 CPU 사용량이 15프로를 넘어서면 replica 를 10개까지 늘려준다
 
 ```
-kubectl autoscale deploy order --min=1 --max=10 --cpu-percent=15
+kubectl autoscale deploy message --min=1 --max=10 --cpu-percent=15
 ```
 
 * /home/project/team/forthcafe/yaml/siege.yaml
@@ -668,13 +668,13 @@ spec:
 * siege를 활용해서 워크로드를 1000명, 1분간 걸어준다. (Cloud 내 siege pod에서 부하줄 것)
 ```
 kubectl exec -it pod/siege -c siege -- /bin/bash
-siege -c1000 -t60S  -v --content-type "application/json" 'http://{EXTERNAL-IP}:8080/orders POST {"memuId":2, "quantity":1}'
-siege -c1000 -t60S  -v --content-type "application/json" 'http://52.141.61.164:8080/orders POST {"memuId":2, "quantity":1}'
+siege -c1000 -t60S  -v --content-type "application/json" 'http://{EXTERNAL-IP}:8080/messages POST {"memuId":2, "quantity":1}'
+siege -c1000 -t60S  -v --content-type "application/json" 'http://52.141.61.164:8080/messages POST {"memuId":2, "quantity":1}'
 ```
 
 * 오토스케일이 어떻게 되고 있는지 모니터링을 걸어둔다
 ```
-kubectl get deploy order -w
+kubectl get deploy message -w
 ```
 ![image](https://user-images.githubusercontent.com/5147735/109771563-4c9c6080-7c40-11eb-9bf8-1efef17bedee.png)
 ```
