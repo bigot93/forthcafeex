@@ -470,6 +470,20 @@ env:
          name: systemmode
          key: sysmode
 ```
+* Message.java config map 참조코드 추가
+```
+    @PrePersist
+    public void onPrePersist(){
+        // configMap 설정
+        String sysEnv = System.getenv("SYS_MODE");
+        if(sysEnv == null) sysEnv = "LOCAL";
+        System.out.println("################## SYSTEM MODE: " + sysEnv);
+
+        MessageSended messageSended = new MessageSended();
+        BeanUtils.copyProperties(this, messageSended);
+        messageSended.publishAfterCommit();
+    }
+```
 * Configmap 생성, 정보 확인
 ```
 kubectl create configmap systemmode --from-literal=sysmode=KUBE
