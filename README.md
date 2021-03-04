@@ -204,6 +204,10 @@ spring:
           uri: http://localhost:8084
           predicates:
             - Path= /myPages/**
+        - id: Message
+          uri: http://localhost:8085
+          predicates:
+            - Path=/messages/** 
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -239,6 +243,10 @@ spring:
           uri: http://MyPage:8080
           predicates:
             - Path= /myPages/**
+        - id: Message
+          uri: http://Message:8080
+          predicates:
+            - Path=/messages/** 
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -252,6 +260,7 @@ spring:
 
 server:
   port: 8080
+
 ```
 8088 port로 Order서비스 정상 호출
 
