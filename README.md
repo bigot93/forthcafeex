@@ -286,7 +286,7 @@ Materialized View를 구현하여, 타 마이크로서비스의 데이터 원본
 위 결과로 서로 다른 마이크로 서비스 간에 트랜잭션이 묶여 있음을 알 수 있다.
 
 # 폴리글랏
-Order 서비스의 DB와 MyPage의 DB를 다른 DB를 사용하여 폴리글랏을 만족시키고 있다.
+Order 서비스의 DB와 Message 서비스의 DB가 서로 다른 DB를 사용하여 폴리글랏을 만족시키고 있다.
 
 **Order의 pom.xml DB 설정 코드**
 
