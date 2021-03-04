@@ -21,6 +21,8 @@
 
 # Event Storming 결과
 
+![image](https://user-images.githubusercontent.com/57469176/109895146-0f80ae80-7cd2-11eb-9d4b-9a20c2016bb2.png)
+
 ![EventStormingV1](https://github.com/bigot93/forthcafe/blob/main/images/eventingstorming_forthcafe.png)
 
 # 헥사고날 아키텍처 다이어그램 도출
