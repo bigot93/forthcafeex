@@ -320,9 +320,27 @@ public interface MessageService {
 }
 ```
 
+** Pay 서비스 와 Message service를 Req/Res 패턴으로 연결**
+```java
+@PrePersist
+    public void onPrePersist(){
+
+        this.setStatus("Pay");
+
+        Payed payed = new Payed();
+        BeanUtils.copyProperties(this, payed);
+        payed.publishAfterCommit();
+        
+        Message message = new Message();
+        BeanUtils.copyProperties(this, message);
+        PayApplication.applicationContext.getBean(MessageService.class).message(message);
+
+    }
+```
+
 **동작 확인**
 
-잠시 Delivery 서비스 중지
+잠시 Message 서비스 중지
 ![증빙7](https://github.com/bigot93/forthcafe/blob/main/images/%EB%8F%99%EA%B8%B0%ED%99%941.png)
 
 주문 취소 요청시 Pay 서비스 변화 없음
