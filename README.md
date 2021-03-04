@@ -262,7 +262,7 @@ server:
   port: 8080
 
 ```
-8088 port로 Order서비스 정상 호출
+8088 port로 Message서비스 정상 호출
 
 ![image](https://user-images.githubusercontent.com/57469176/109923737-8fbf0800-7d02-11eb-90a2-d6bab068d860.png)
 
