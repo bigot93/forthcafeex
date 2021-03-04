@@ -481,8 +481,7 @@ kubectl get configmap systemmode -o yaml
 ```
 kubectl logs {pod ID}
 ```
-![image](https://user-images.githubusercontent.com/5147735/109760887-dc3b1280-7c32-11eb-8284-f4544d7b72b0.png)
-
+![image](https://user-images.githubusercontent.com/57469176/109970533-851f6580-7d38-11eb-8373-345b507e27cb.png)
 
 ## Deploy / Pipeline
 
