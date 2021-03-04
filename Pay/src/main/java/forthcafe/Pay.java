@@ -5,6 +5,8 @@ import org.springframework.beans.BeanUtils;
 
 import forthcafe.external.Delivery;
 import forthcafe.external.DeliveryService;
+import forthcafe.external.Message;
+import forthcafe.external.MessageService;
 
 import java.util.List;
 
@@ -24,12 +26,22 @@ public class Pay {
     private String status;
 
 
-    @PostPersist
-    public void onPostPersist(){
+    @PrePersist
+    public void onPrePersist(){
+
+        this.setStatus("Pay");
+
         Payed payed = new Payed();
         BeanUtils.copyProperties(this, payed);
-        payed.setStatus("Pay");
         payed.publishAfterCommit();
+
+        //Following code causes dependency to external APIs
+        // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
+
+        Message message = new Message();
+        // mappings goes here
+        BeanUtils.copyProperties(this, message);
+        Application.applicationContext.getBean(MessageService.class).message(message);
 
         // delay test시 주석해제
         //try {
@@ -37,20 +49,6 @@ public class Pay {
         //} catch (InterruptedException e) {
         //        e.printStackTrace();
         //}
-
-        // 임시주석처리
-        // PayCancelled payCancelled = new PayCancelled();
-        // BeanUtils.copyProperties(this, payCancelled);
-        // payCancelled.publishAfterCommit();
-
-        // //Following code causes dependency to external APIs
-        // // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
-
-        // Delivery delivery = new Delivery();
-        // // mappings goes here
-        // PayApplication.applicationContext.getBean(DeliveryService.class).deliveryCancel(delivery);
-
-
     }
 
     @PostUpdate
