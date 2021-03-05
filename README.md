@@ -357,7 +357,7 @@ Message 서비스 재기동 - 8081: Order service, 8082: Pay service, 8085: Mess
 ![image](https://user-images.githubusercontent.com/57469176/109942786-e08d2b80-7d17-11eb-94d1-68aef65ccb30.png)
 ![image](https://user-images.githubusercontent.com/57469176/109942957-06b2cb80-7d18-11eb-9e51-273ac86d0b7e.png)
 
-Fallback 설정
+Pay service 의 Fallback 설정
 
 ![image](https://user-images.githubusercontent.com/57469176/109943479-9789a700-7d18-11eb-9c7e-68a0ab9a42ad.png)
 ![image](https://user-images.githubusercontent.com/57469176/109943642-c0aa3780-7d18-11eb-8820-43c6c88b7e21.png)
