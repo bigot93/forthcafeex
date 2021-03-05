@@ -709,7 +709,7 @@ siege -c10 -t300S  -v --content-type "application/json" 'http://Message:8080/mes
           livenessProbe:
             httpGet:
               path: '/actuator/health'
-              port: 8080
+              port: 8090
             initialDelaySeconds: 120
             timeoutSeconds: 2
             periodSeconds: 5
