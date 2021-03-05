@@ -15,7 +15,7 @@
 1. 트랜젝션
    1. 결재가 완료되면 메시지가 전송된다 → Sync 호출
 2. 장애격리
-   1. 주문내역조회가 장해라도 메시지는 발송된다 → Async(event-driven), Eventual Consistency
+   1. 주문내역조회가 장애라도 메시지는 발송된다 → Async(event-driven), Eventual Consistency
    1. 메시지가 과중되면 잠시 후에 재시도 하도록 유도한다 → Circuit breaker, fallback
 3. 성능
    1. 고객이 메시지전송상태를 주문내역조회에서 확인할 수 있어야 한다 → CQRS
