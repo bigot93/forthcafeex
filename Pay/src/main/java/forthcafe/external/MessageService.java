@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Date;
 
-// @FeignClient(name = "Message", url = "${api.url.message}", fallback = MessageServiceImpl.class) // 
+//@FeignClient(name = "Message", url = "${api.url.message}", fallback = MessageServiceImpl.class)
 @FeignClient(name="Message", url="${api.url.message}")
 public interface MessageService {
 

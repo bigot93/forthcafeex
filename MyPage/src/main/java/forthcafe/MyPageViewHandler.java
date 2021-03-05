@@ -40,8 +40,7 @@ public class MyPageViewHandler {
             e.printStackTrace();
         }
     }
-
-    /*
+/*
     @StreamListener(KafkaProcessor.INPUT)
     public void whenOrdered_then_CREATE_2 (@Payload MessageSended messageSended) {
         try {
@@ -65,8 +64,7 @@ public class MyPageViewHandler {
             e.printStackTrace();
         }
     }
-    */
-
+  */  
     @StreamListener(KafkaProcessor.INPUT)
     public void whenPayed_then_UPDATE_1(@Payload Payed payed) {
         try {
@@ -229,6 +227,7 @@ public class MyPageViewHandler {
         }
     }
 
+    
     @StreamListener(KafkaProcessor.INPUT)
     public void whenPayed_then_UPDATE_7(@Payload MessageSended messageSended) {
         try {
@@ -254,5 +253,6 @@ public class MyPageViewHandler {
         }catch (Exception e){
             e.printStackTrace();
         }
-    }    
+    }
+        
 }

@@ -27,14 +27,15 @@ public class Message {
 
         MessageSended messageSended = new MessageSended();
         BeanUtils.copyProperties(this, messageSended);
-        messageSended.publishAfterCommit();
+        //messageSended.publishAfterCommit();
+        messageSended.publish();
 
         // delay test시 주석해제
-        //try {
+        // try {
         //        Thread.currentThread().sleep((long) (400 + Math.random() * 220));
-        //} catch (InterruptedException e) {
+        // } catch (InterruptedException e) {
         //        e.printStackTrace();
-        //}
+        // }
     }
 
     public Long getId() {

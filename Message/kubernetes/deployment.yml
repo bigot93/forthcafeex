@@ -15,16 +15,16 @@ spec:
         app: message
     spec:
       containers:
-        - name: Message
-          image: skuser02.azurecr.io/message:v1
+        - name: message
+          image: skuser02.azurecr.io/message:v4
           ports:
             - containerPort: 8080
           # autoscale start
           resources:
-              limits:
-                cpu: 500m
-              requests:
-                cpu: 200m
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 200m
           # autoscale end
           ### config map start
           #env:

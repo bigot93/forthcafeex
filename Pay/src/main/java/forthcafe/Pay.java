@@ -33,7 +33,8 @@ public class Pay {
 
         Payed payed = new Payed();
         BeanUtils.copyProperties(this, payed);
-        payed.publishAfterCommit();
+        //payed.publishAfterCommit();
+        payed.publish();
 
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
